@@ -1,17 +1,44 @@
-import click
 import sqlite3
 
-conn = sqlite3.connect('secretfiles.db') 
+correct_pass = '1234'
 
-curs = conn.cursor()
+password = input('What is your password\n')
 
-curs.execute("""CREATE TABLE user (
-        Password text,
-        Files BLOB
-        )""")
+def login():
+    if password == correct_pass:
+        print("""
+              S = save img
+              O = open file
+              """)
+        userinput = input(':')
+    else:
+        print('try again')
+        
+login()
+
+# connecting th db server
+# conn = sqlite3.connect('secretfiles.db') 
 
 
-conn.commit()
-conn.close()
+# curs = conn.cursor()
 
-print('code is working')
+#making the database
+# curs.execute("""CREATE TABLE user (
+#         Password text,
+#         Files BLOB
+#         )""")
+
+#adding dummy info
+# curs.execute("INSERT INTO user VALUES ('1234', 'file.png')")
+
+# curs.execute("SELECT * FROM user")
+
+# print(curs.fetchone())
+
+# conn.commit()
+
+# #closing the db connection
+# conn.close()
+
+
+
