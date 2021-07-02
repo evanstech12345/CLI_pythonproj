@@ -13,32 +13,33 @@ def login():
         userinput = input(':')
     else:
         print('try again')
-        
+    if userinput == 'S':
+        input('what is the file name :')
 login()
 
-# connecting th db server
-# conn = sqlite3.connect('secretfiles.db') 
+# connecting the db server
+conn = sqlite3.connect('secretfiles.db') 
 
 
-# curs = conn.cursor()
+curs = conn.cursor()
 
-#making the database
-# curs.execute("""CREATE TABLE user (
-#         Password text,
-#         Files BLOB
-#         )""")
+# making the database
+curs.execute("""CREATE TABLE user (
+        Password text,
+        Files BLOB
+        )""")
 
-#adding dummy info
-# curs.execute("INSERT INTO user VALUES ('1234', 'file.png')")
+# adding dummy info
+curs.execute("INSERT INTO user VALUES ('1234', 'file.png')")
 
-# curs.execute("SELECT * FROM user")
+curs.execute("SELECT * FROM user")
 
-# print(curs.fetchone())
+print(curs.fetchone())
 
-# conn.commit()
+conn.commit()
 
-# #closing the db connection
-# conn.close()
+#closing the db connection
+conn.close()
 
 
 
