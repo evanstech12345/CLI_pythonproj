@@ -4,6 +4,33 @@ correct_pass = '1234'
 
 password = input('What is your password\n')
 
+
+
+def create_database():
+# connecting the db server
+    conn = sqlite3.connect('secretfiles.db') 
+
+
+    curs = conn.cursor()
+
+# making the database
+    curs.execute("""CREATE TABLE IF NOT EXISTS img (
+        Files BLOB
+        )""")
+
+# adding dummy info
+    curs.execute(f"INSERT INTO img VALUES ({path})")
+
+    curs.execute("SELECT * FROM img")
+
+    print(curs.fetchone())
+
+    conn.commit()
+
+#closing the db connection
+    conn.close()
+
+
 def login():
     if password == correct_pass:
         print("""
@@ -14,32 +41,12 @@ def login():
     else:
         print('try again')
     if userinput == 'S':
-        input('what is the file name :')
+        global path 
+        path = input('what is the file path : ')
 login()
-
-# connecting the db server
-conn = sqlite3.connect('secretfiles.db') 
+create_database()
 
 
-curs = conn.cursor()
-
-# making the database
-curs.execute("""CREATE TABLE user (
-        Password text,
-        Files BLOB
-        )""")
-
-# adding dummy info
-curs.execute("INSERT INTO user VALUES ('1234', 'file.png')")
-
-curs.execute("SELECT * FROM user")
-
-print(curs.fetchone())
-
-conn.commit()
-
-#closing the db connection
-conn.close()
 
 
 
