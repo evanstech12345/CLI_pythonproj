@@ -1,7 +1,7 @@
 import http.server
 import socketserver
 import shutil
-import bcrypt
+
 
 password = input('Create your password\n')
 
@@ -25,6 +25,7 @@ if you want to take a file out press T
     if file_open_save == 'S':
         file_path = input('what is the file path: ')
         src = file_path
+        #change this to where the files folder path would be on your computer
         dst = '/opt/homebrew/Caskroom/miniforge/base/envs/CLI_pyproj/CLI_pythonproj/files'
         shutil.copy(src, dst)
         print(file_open_save)
@@ -36,8 +37,10 @@ if you want to take a file out press T
         httpd.serve_forever()
     if file_open_save == 'T':
         take_out = input('what is the file name')
+        #change this to where the files folder path is on your computer 
         src = f'/opt/homebrew/Caskroom/miniforge/base/envs/CLI_pyproj/CLI_pythonproj/files/{take_out}'
-        dst = '/Users/evanshor/Desktop'
+        #change this to have it save to your desktop 
+        dst = '/Users/[user]/Desktop'
         shutil.copy(src, dst)
         
         
