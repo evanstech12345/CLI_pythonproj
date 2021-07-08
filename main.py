@@ -3,13 +3,9 @@ import socketserver
 import shutil
 import bcrypt
 
-password = '1234'
-hashedpass = bcrypt.hashpw(password, bcrypt.gensalt(5))
+password = input('Create your password\n')
 
-correct_pass = hashedpass
-print(correct_pass)
-
-password = input('What is your password\n')
+correct_pass = input('Enter your password\n')
 
 
 
